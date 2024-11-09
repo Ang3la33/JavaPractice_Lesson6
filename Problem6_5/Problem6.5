@@ -1,0 +1,49 @@
+Assignment Questions and Answers for Problem 6.5
+
+Q - How are abstract classes and interfaces the same?
+A - Both abstract classes and interfaces provide a blueprint for other classes. Neither can be instantiated; you
+cannot create an object of an abstract class or an interface. They both support polymorphism; you can refer to
+an object of a subclass or implementing class using the abstract class or interface type. Both can declare abstract
+methods that have no implementation. They also both outline methods that must be implemented, ensuring that certain
+behaviours or properties are consistent among classes.
+
+Q - How are abstract classes and interfaces different?
+A - -Inheritance vs. Implementation
+Abstract classes support inheritance, a class can extend only one abstract class.
+Interfaces support implementation, a class can implement multiple interfaces.
+-Methods
+Abstract classes can contain a mix of concrete methods and abstract methods, allowing for default behaviour that
+subclasses can inherit directly.
+Interfaces can have only default and static methods, these are not as concrete methods in abstract classes.
+-Variables
+Abstract classes can have instance variables with any type of access modifier (private, protected, public),
+which can be used and modified by subclasses.
+Interfaces variables are all public, static and final by default. They are constant, shared by all implementing
+classes and cannot be modified.
+-Constructors
+Abstract classes can have constructors, which are then used by their subclasses to initialize inherited fields
+and state.
+Interfaces cannot have constructors, as interfaces are not a part of the class hierarchy. Implementing classes
+are responsible for their own initialization.
+
+Q - Why does it generally make more sense to override the equals method than to overload it?
+A - Overriding the equals method redefines equality in a way that Java recognizes, allowing it to function
+correctly in built in classes which rely on it.
+Overloading does not replace the original equals method, which can cause unexpected behaviour and bugs.
+To maintain the required properties and keep code readable it is best to use override in this scenario.
+
+Q - Which of the following will compile (mark with a C)? Which of the following will execute successfully
+(mark with an E)?
+
+1. Ball ball = new Football("spalding");         - E
+
+2. Ball ball = new Football("Spalding");
+   Baseball baseball = (Baseball)ball;           - C / Football has no relationship with Baseball
+
+3. Object obj = new Baseball("spalding");        - E
+
+4. Object obj = new Baseball("spalding");
+   Tossable tossable = obj;                      - C / To assign obj to tossable it must be explicitly cast to Tossable
+
+5. Tossable tossable = new Baseball("spalding");
+   Object obj = tossable;                        - E
